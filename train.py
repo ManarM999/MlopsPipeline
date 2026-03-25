@@ -37,8 +37,8 @@ with mlflow.start_run() as run:
 
     
 
-    # accuracy = 0.7   
-    accuracy = 0.9   
+    accuracy = 0.7   
+    #accuracy = 0.9   
 
     print(f"Accuracy: {accuracy}")
 
