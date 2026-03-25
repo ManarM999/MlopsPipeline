@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: mlruns
-          path: mlruns/0  # only the experiment folder containing runs
+          path: mlruns
 
 
   deploy:
@@ -71,7 +71,13 @@ jobs:
           path: ./mlruns
 
       - name: Debug MLruns
-        run: ls -R mlruns
+        run: |
+          echo "=== Current directory ==="
+          pwd
+          echo "=== All files in workspace ==="
+          find . -not -path './.git/*' | sort
+          echo "=== model_info.txt content ==="
+          cat model_info.txt
 
       - name: Check threshold
         run: python check_threshold.py
