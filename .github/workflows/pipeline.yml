@@ -68,7 +68,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: mlruns
-          path: ./mlruns/0  # match the upload path
+          path: ./mlruns
 
       - name: Debug MLruns
         run: ls -R mlruns
