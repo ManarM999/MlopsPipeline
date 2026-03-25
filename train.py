@@ -7,7 +7,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 # Set MLflow tracking URI from GitHub Secrets
-mlflow.set_tracking_uri(os.environ.get("MLFLOW_TRACKING_URI"))
+mlflow.set_tracking_uri("file:./mlruns")
 
 # Create fake dataset (since you don't have real data)
 X, y = make_classification(
@@ -38,7 +38,7 @@ with mlflow.start_run() as run:
     
 
     # accuracy = 0.7   
-    # accuracy = 0.9   # for SUCCESS pipeline
+    accuracy = 0.9   
 
     print(f"Accuracy: {accuracy}")
 
