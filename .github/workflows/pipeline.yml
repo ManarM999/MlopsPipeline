@@ -35,11 +35,11 @@ jobs:
           name: model_info
           path: model_info.txt
 
-      - name: Upload MLflow data
+      - name: Upload MLflow experiment folder
         uses: actions/upload-artifact@v4
         with:
           name: mlruns
-          path: mlruns
+          path: mlruns/0  # only the experiment folder containing runs
 
 
   deploy:
@@ -64,14 +64,14 @@ jobs:
           name: model_info
           path: .
 
-      - name: Download MLflow data
+      - name: Download MLflow experiment folder
         uses: actions/download-artifact@v4
         with:
           name: mlruns
-          path: .
+          path: ./mlruns/0  # match the upload path
 
-      - name: Debug files (important)
-        run: ls -R
+      - name: Debug MLruns
+        run: ls -R mlruns
 
       - name: Check threshold
         run: python check_threshold.py
